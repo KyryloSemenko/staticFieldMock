@@ -29,7 +29,7 @@ public class DriverSnapshotHandlerTest {
     }
     
     /**
-     * Remove the mocked instance from the class. It is important, because other tests will be confused with the mocked instance.
+     * Remove the mocked instance from the class. It is important to clean up the class, because other tests will be confused with the mocked instance.
      * @throws Exception if the instance could not be accessible
      */
     @After
@@ -45,9 +45,8 @@ public class DriverSnapshotHandlerTest {
      * @param mock the mock to be inserted to a class
      */
     private void setMock(FormatterService mock) {
-        Field instance;
         try {
-            instance = FormatterService.class.getDeclaredField("instance");
+            Field instance = FormatterService.class.getDeclaredField("instance");
             instance.setAccessible(true);
             instance.set(instance, mock);
         } catch (Exception e) {

@@ -1,4 +1,4 @@
-The project describes how to mock static field by example of singleton instance.
+The project describes how to mock a static field by example of a singleton instance.
 
 The main idea is:
 * injecting of mocked object to a static field before a test
@@ -14,9 +14,8 @@ See com.example.DriverSnapshotHandlerTest
      * @param mock the mock to be inserted to a class
      */
     private void setMock(FormatterService mock) {
-        Field instance;
         try {
-            instance = FormatterService.class.getDeclaredField("instance");
+            Field instance = FormatterService.class.getDeclaredField("instance");
             instance.setAccessible(true);
             instance.set(instance, mock);
         } catch (Exception e) {
